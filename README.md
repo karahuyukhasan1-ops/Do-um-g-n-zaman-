@@ -1,15 +1,17 @@
 # 🎉 Doğum Günü Zamanı
 
-Doğum günlerini o gün geldiği zaman bildirim olarak gönderen bir Android uygulaması.
+Doğum günlerini istediğiniz saatte bildirim olarak gönderen akıllı bir Android uygulaması.
 
 ## 📱 Özellikler
 
 - ➕ **Kişi Ekleme**: İsim ve doğum tarihini (Gün/Ay) kaydedebilirsiniz
-- 🔔 **Otomatik Bildirim**: Her doğum günü gece yarısında (00:00) bildirim gönderir
+- 🔔 **Özel Saat Bildirimi**: Her doğum günü, seçtiğiniz saatte bildirim gönderir
+- ⏰ **Saat Seçimi**: Bildirimi görmek istediğiniz saati ve dakikayı belirleyebilirsiniz
 - 📋 **Kişi Listesi**: Eklediğiniz tüm kişileri görebilirsiniz
 - 🗑️ **Kişi Silme**: İstemediğiniz kişileri silebilirsiniz
 - 💾 **Yerel Veri Tabanı**: Tüm veriler cihazınızda güvenli şekilde saklanır
 - 🚀 **Hafif ve Hızlı**: Minimal kaynak kullanımı
+- 🎯 **Güvenilir**: WorkManager ile güvenilir bildirim gönderimi
 
 ## 🎯 Gereksinimler
 
@@ -39,11 +41,18 @@ cd Do-um-g-n-zaman-
 1. Ana ekrandaki **"+ Kişi Ekle"** butonuna tıklayın
 2. Kişinin **adını** girin
 3. Doğum **gün ve ayını** seçin (örn: 6 Ocak)
-4. **Kaydet** butonuna tıklayın
+4. Bildirimi görmek istediğiniz **saati ve dakikayı** seçin
+5. **Kaydet** butonuna tıklayın
 
 ### Bildirimleri Alma
-- Her doğum günü gece yarısında otomatik olarak bildirim alacaksınız
+- Her doğum günü, belirlediğiniz saatte otomatik olarak bildirim alacaksınız
+- Örneğin: Eğer saati 09:30 olarak ayarladıysanız, doğum günü sabah 9'de 30 dakikada bildirim gelir
 - Cihazınızın **bildirimleri etkinleştirilmiş** olması gerekir
+
+### Saat Değiştirme
+1. Listeden değiştirmek istediğiniz kişinin satırında **Düzenle** butonuna tıklayın
+2. **Saati ve dakikayı** yeni değerlere ayarlayın
+3. **Güncelle** butonuna tıklayın
 
 ### Kişi Silme
 1. Listeden silmek istediğiniz kişiye uzun basın
@@ -56,6 +65,7 @@ cd Do-um-g-n-zaman-
 - **Veri Tabanı**: Room Database
 - **Bildirim Sistemi**: WorkManager + Android Notifications
 - **Mimari**: MVVM Pattern
+- **Zamanlama**: AlarmManager + WorkManager
 
 ## 📦 Bağımlılıklar
 
@@ -76,10 +86,14 @@ Do-um-g-n-zaman-/
 │   │   │   ├── BirthdayEntity.kt
 │   │   │   ├── BirthdayDao.kt
 │   │   │   ├── BirthdayNotificationWorker.kt
-│   │   │   └── BirthdayNotificationReceiver.kt
+│   │   │   ├── BirthdayNotificationManager.kt
+│   │   │   ├── BirthdayAdapter.kt
+│   │   │   ├── BirthdayApp.kt
+│   │   │   └── AlarmScheduler.kt
 │   │   ├── res/
 │   │   │   ├── layout/
-│   │   │   │   └── activity_main.xml
+│   │   │   │   ├── activity_main.xml
+│   │   │   │   └── birthday_item.xml
 │   │   │   ├── values/
 │   │   │   │   └── strings.xml
 │   │   │   └── mipmap/
@@ -93,8 +107,15 @@ Do-um-g-n-zaman-/
 Uygulama aşağıdaki izinleri gerektirir:
 
 - `POST_NOTIFICATIONS` - Bildirim göndermek için
-- `SCHEDULE_EXACT_ALARM` - Tam zamanında bildirim göndermek için
+- `SCHEDULE_EXACT_ALARM` - Tam saatte bildirim göndermek için
 - `INTERNET` - (Gelecekteki özellikler için)
+
+## 📋 Bildirim Saati Örnekleri
+
+- **09:30** - Her doğum günü sabah 9'de 30 dakikada bildirim alırsınız
+- **14:00** - Her doğum günü öğleden sonra 2'de bildirim alırsınız
+- **00:00** - Her doğum günü gece yarısında bildirim alırsınız
+- **21:45** - Her doğum günü akşam 9'de 45 dakikada bildirim alırsınız
 
 ## 🐛 Sorun Bildirimi
 
@@ -104,9 +125,10 @@ Herhangi bir sorun veya hata bulursanız, GitHub Issues kısmında bildirebilirs
 
 - 📅 Takvim görünümü
 - 🎵 Özel bildirim sesi
-- 🎂 Yaş hesaplama
+- 🎂 Yaş hesaplama ve gösterimi
 - 📤 Kişileri dışa aktarma
 - 🌙 Koyu tema desteği
+- 🔔 Birden fazla bildirim seçeneği
 
 ## 📄 Lisans
 
