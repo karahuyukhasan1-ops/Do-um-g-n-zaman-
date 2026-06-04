@@ -11,29 +11,39 @@ Doğum günlerini istediğiniz saatte bildirim olarak gönderen akıllı bir And
 - 🗑️ **Kişi Silme**: İstemediğiniz kişileri silebilirsiniz
 - 💾 **Yerel Veri Tabanı**: Tüm veriler cihazınızda güvenli şekilde saklanır
 - 🚀 **Hafif ve Hızlı**: Minimal kaynak kullanımı
-- 🎯 **Güvenilir**: WorkManager ile güvenilir bildirim gönderimi
+- 🎯 **Güvenilir**: AlarmManager ile güvenilir bildirim gönderimi
 
 ## 🎯 Gereksinimler
 
 - **Android Sürümü**: Android 13 ve üzeri
 - **API Level**: Minimum 33 (Android 13)
 
-## 📥 Kurulum
+## 📥 Kurulum ve İndirme
 
-### 1. Projeyi Klonlayın
+### ⬇️ En Kolay Yol - APK İndir (Önerilen)
+
+1. [**Releases** bölümüne tıklayın](https://github.com/karahuyukhasan1-ops/Do-um-g-n-zaman-/releases)
+2. En son sürümü bulun
+3. **APK dosyasını indirin**
+4. Android telefonunuzda dosyayı açın ve **Yükle** butonuna basın
+5. Uygulamayı açın ve kullanmaya başlayın! 🎉
+
+> 📌 **Not**: İlk açılışta "Bilinmeyen kaynak" uyarısı alabilirsiniz. Kurulum ayarlarından bilinmeyen kaynaklardan uygulama yüklemesine izin vermeniz gerekebilir.
+
+### 👨‍💻 Geliştiriciler İçin - Proje Klonlama
+
+Eğer kodu incelemek veya değiştirmek istiyorsanız:
+
 ```bash
 git clone https://github.com/karahuyukhasan1-ops/Do-um-g-n-zaman-.git
 cd Do-um-g-n-zaman-
 ```
 
-### 2. Android Studio'da Açın
+**Android Studio'da Açın:**
 - Android Studio'yu açın
-- "Open" seçeneğine tıklayın
-- Proje klasörünü seçin
-
-### 3. Uygulamayı Çalıştırın
-- Bir emülatör veya fiziksel cihaz bağlayın
-- "Run" butonuna tıklayın
+- File → Open → Proje klasörünü seçin
+- Gradle senkronizasyonunu bekleyin
+- Run (▶️) butonuna basın
 
 ## 📖 Kullanım
 
@@ -49,29 +59,24 @@ cd Do-um-g-n-zaman-
 - Örneğin: Eğer saati 09:30 olarak ayarladıysanız, doğum günü sabah 9'de 30 dakikada bildirim gelir
 - Cihazınızın **bildirimleri etkinleştirilmiş** olması gerekir
 
-### Saat Değiştirme
-1. Listeden değiştirmek istediğiniz kişinin satırında **Düzenle** butonuna tıklayın
-2. **Saati ve dakikayı** yeni değerlere ayarlayın
-3. **Güncelle** butonuna tıklayın
-
 ### Kişi Silme
-1. Listeden silmek istediğiniz kişiye uzun basın
-2. **Sil** seçeneğine tıklayın
+1. Listeden silmek istediğiniz kişiye tıklayın
+2. **Sil (🗑️)** butonuna tıklayın
+3. Kişi silinecektir
 
 ## 🛠️ Teknoloji Stack
 
 - **Dil**: Kotlin
 - **UI Framework**: Android XML Layout
 - **Veri Tabanı**: Room Database
-- **Bildirim Sistemi**: WorkManager + Android Notifications
+- **Bildirim Sistemi**: AlarmManager + Android Notifications
 - **Mimari**: MVVM Pattern
-- **Zamanlama**: AlarmManager + WorkManager
+- **Zamanlama**: AlarmManager + BroadcastReceiver
 
 ## 📦 Bağımlılıklar
 
 - AndroidX Core
 - Room Database
-- WorkManager
 - Material Design
 
 ## 📝 Proje Yapısı
@@ -89,7 +94,8 @@ Do-um-g-n-zaman-/
 │   │   │   ├── BirthdayNotificationManager.kt
 │   │   │   ├── BirthdayAdapter.kt
 │   │   │   ├── BirthdayApp.kt
-│   │   │   └── AlarmScheduler.kt
+│   │   │   ├── AlarmScheduler.kt
+│   │   │   └── BirthdayReceiver.kt
 │   │   ├── res/
 │   │   │   ├── layout/
 │   │   │   │   ├── activity_main.xml
@@ -99,6 +105,8 @@ Do-um-g-n-zaman-/
 │   │   │   └── mipmap/
 │   │   └── AndroidManifest.xml
 │   └── build.gradle.kts
+├── .github/workflows/
+│   └── build-release.yml
 └── README.md
 ```
 
@@ -108,7 +116,6 @@ Uygulama aşağıdaki izinleri gerektirir:
 
 - `POST_NOTIFICATIONS` - Bildirim göndermek için
 - `SCHEDULE_EXACT_ALARM` - Tam saatte bildirim göndermek için
-- `INTERNET` - (Gelecekteki özellikler için)
 
 ## 📋 Bildirim Saati Örnekleri
 
@@ -119,7 +126,7 @@ Uygulama aşağıdaki izinleri gerektirir:
 
 ## 🐛 Sorun Bildirimi
 
-Herhangi bir sorun veya hata bulursanız, GitHub Issues kısmında bildirebilirsiniz.
+Herhangi bir sorun veya hata bulursanız, [GitHub Issues](https://github.com/karahuyukhasan1-ops/Do-um-g-n-zaman-/issues) kısmında bildirebilirsiniz.
 
 ## 💡 Gelecek Özellikler
 
@@ -139,3 +146,6 @@ Bu proje MIT Lisansı altında yayınlanmıştır.
 **Yaratıcı**: karahuyukhasan1-ops  
 **Son Güncelleme**: 2026  
 **Durum**: 🚀 Aktif Geliştirme
+
+### 🚀 APK İndirme Bağlantısı
+[**→ En Son Sürümü İndir ←**](https://github.com/karahuyukhasan1-ops/Do-um-g-n-zaman-/releases)
