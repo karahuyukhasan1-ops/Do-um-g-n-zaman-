@@ -21,7 +21,7 @@ jobs:
           cache: gradle
 
       - name: Build APK
-        run: gradle assembleRelease --no-daemon
+        run: gradle assembleRelease --no-daemon --stacktrace
 
       - name: Upload APK to Release
         uses: softprops/action-gh-release@v1
